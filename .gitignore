@@ -1,7 +1,6 @@
-kernel.o
-loader.o
-mykernel.bin
-mykernel.iso
+*.o
+*.bin
+*.iso
 
 .vscode/
 iso/

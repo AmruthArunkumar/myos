@@ -18,10 +18,31 @@ Install Virtual Box
 wget https://download.virtualbox.org/virtualbox/7.0.20/virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb
 sudo apt --fix-broken install virtualbox-7.0_7.0.20-163906~Ubuntu~jammy_amd64.deb
 ```
+Setup Virtual Box
+
+Open Virtual Box and Setup the VM
+- Name: My Operating System"
+- ISO Image: [Select location of the .iso file]
+- Type: Other
+- Version: Other/Unknown
+- Do Not Add a Virtual Hard Disk
+
 Run The OS in the VM
 ```bash
 make run
 ```
 
-## Intro
-A Simple Hello World OS
+## File Purposes
+### kernel.cpp
+- Contains main C++ kernel code
+### loader.s
+- Sets stack pointer then jumps to kernel.cpp
+### linker.ld
+- Links kernel.o and loader.o into kernel.bin
+### Makefile
+- Automates the build process
+- Runs the kernel in Virtual Box
+### types.h
+- Defines consistent types to use
+### gdt.cpp/gdt.h
+- Sets up the Global Descriptor Table
