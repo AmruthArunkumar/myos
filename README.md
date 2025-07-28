@@ -48,5 +48,6 @@ make run
 - Defines consistent types to use
 ### `gdt.cpp/gdt.h`
 - Sets up the Global Descriptor Table
+- Describes Memory Code and Data Segments
 ### `port.cpp/port.h`
 - Sets up ability to read and write to ports
