@@ -51,3 +51,8 @@ make run
 - Describes Memory Code and Data Segments
 ### `port.cpp/port.h`
 - Sets up ability to read and write to ports
+### `interrupts.cpp/interrupts.h`
+- Sets up Interrupt Descriptor Table 
+- Sets up the Interrupt Manager
+### `interruptstubs.s`
+- Connects low-level interrupts to C++ code
