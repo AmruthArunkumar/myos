@@ -1,6 +1,7 @@
 #include "types.h"
 #include "gdt.h"
 #include "interrupts.h"
+#include "keyboard.h"
 
 void printf(char* str) {
     static uint16_t* VideoMemory = (uint16_t*) 0xB8000;
@@ -20,6 +21,15 @@ void printf(char* str) {
             case '\n':
                 y++;
                 x = 0;
+                break;
+            case '\b':
+                for (y = 0; y < 25; y++) {
+                    for (x = 0; x < 80; x++) {
+                        VideoMemory[80*y+x] = (VideoMemory[80*y+x] & 0xFF00) | ' ';
+                    }
+                }
+                x = 0;
+                y = 0;
                 break;
             default:
                 VideoMemory[80*y+x] = (color << 8) | str[i];
@@ -56,10 +66,12 @@ extern "C" void callConstructors() {
 
 extern "C" void kernelMain(void* multiboot_structure, uint32_t magicnumber)
 {
-    printf("Hello World!\n");
+    printf("\bHello World!\n");
 
     GlobalDescriptorTable gdt;
     InterruptManager interrupts(&gdt);
+
+    KeyboardDriver keyboard(&interrupts);
 
     interrupts.Activate();
 

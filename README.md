@@ -37,6 +37,7 @@ make run
 ## File Purposes
 ### `kernel.cpp`
 - Contains main C++ kernel code
+- Contains a printf implementation with bold font and newline
 ### `loader.s`
 - Sets stack pointer then jumps to kernel.cpp
 ### `linker.ld`
@@ -56,3 +57,5 @@ make run
 - Sets up the Interrupt Manager
 ### `interruptstubs.s`
 - Connects low-level interrupts to C++ code
+### `keyboard.cpp/keyboard.h`
+- Sets up the Keyboard Driver to handle keyboard interrupts
